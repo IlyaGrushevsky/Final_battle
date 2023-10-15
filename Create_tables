@@ -1,0 +1,59 @@
+create	table fb_events
+(id_event INTEGER not NULL,
+event_type VARCHAR(200),
+data_event date,
+id_service INTEGER,
+id_client INTEGER
+description text)
+with (
+	appendonly=true,
+	orientation=column,
+	compresstype=zstd,
+	compresslevel=3
+)
+distributed randomly;
+
+create	table fb_client
+(id_client INTEGER not NULL,
+gender boolean,
+age INTEGER,
+subscription_type VARCHAR(200),
+location text,
+description text)
+with (
+	appendonly=true,
+	orientation=column,
+	compresstype=zstd,
+	compresslevel=3
+)
+distributed randomly;
+
+create	table fb_service
+(id_service INTEGER not NULL,
+service_type VARCHAR(200),
+title text,
+subscription_type VARCHAR(200),
+location text,
+description text)
+with (
+	appendonly=true,
+	orientation=column,
+	compresstype=zstd,
+	compresslevel=3
+)
+distributed randomly;
+
+create	table fb_subs
+(id_subs INTEGER not NULL,
+subs_type VARCHAR(200),
+subs_title VARCHAR(200),
+start_data date,
+end_data date,
+description text)
+with (
+	appendonly=true,
+	orientation=column,
+	compresstype=zstd,
+	compresslevel=3
+)
+distributed randomly;
